@@ -74,9 +74,6 @@ passport.deserializeUser((id, done) => {
 });
 
 // Routes
-app.use('/', (req, res) => {
-res.json({message: "api endpoint for jobs career 24 frontend"});
-});
 app.use('/api/jobs', require('./routes/jobRoutes'));
 app.use('/api/categories', require('./routes/categoryRoutes'));
 app.use('/api', require('./routes/userRoutes'));
