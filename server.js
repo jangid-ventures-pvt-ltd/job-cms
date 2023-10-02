@@ -76,6 +76,7 @@ passport.deserializeUser((id, done) => {
 // Routes
 app.use('/api/jobs', require('./routes/jobRoutes'));
 app.use('/api/categories', require('./routes/categoryRoutes'));
+app.use('/api/subCategories', require('./routes/subCategoryRoutes'));
 app.use('/api', require('./routes/userRoutes'));
 
 const PORT = process.env.PORT || 8000;
