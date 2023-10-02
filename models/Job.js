@@ -10,11 +10,13 @@ const jobSchema = new mongoose.Schema({
   salary: String,
   role: String,
   jobCategory: String,
-  posts: Number,
-  jobOpeningDate: Date,
-  jobClosingDate: Date,
+  posts: String,
+  jobOpeningDate: String,
+  jobClosingDate: String,
+  jobId: String,
   aboutJob: String,
   seoUrl: String,
+  createdBy: String,
 }, {
   timestamps: {
     createdAt: 'created_At',

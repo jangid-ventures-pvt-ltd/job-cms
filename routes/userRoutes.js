@@ -23,7 +23,7 @@ router.post('/admin/login', async (req, res) => {
     }
 
     // Generate a JWT token with the role included in the payload
-    const token = jwt.sign({ _id: admin._id, role: admin.role }, config.jwtSecret);
+    const token = jwt.sign({ _id: admin._id, role: admin.role, username: admin.username }, config.jwtSecret);
 
     // Update the user's token with the new one
     admin.token = token;
@@ -31,11 +31,8 @@ router.post('/admin/login', async (req, res) => {
     // Save the user with the new token
     await admin.save();
 
-    // Include the user's role in the req.user object
-    req.user = { _id: admin._id, role: admin.role };
-
-    // Successful login
-    res.status(200).json({ message: 'Admin login successful', token });
+    // Include the user's role and username in the response
+    res.status(200).json({ message: 'Admin login successful', token, username: admin.username });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -58,7 +55,7 @@ router.post('/moderator/login', async (req, res) => {
     }
 
     // Generate a new JWT token
-    const token = jwt.sign({ _id: moderator._id, role: moderator.role }, config.jwtSecret);
+    const token = jwt.sign({ _id: moderator._id, role: moderator.role, username: moderator.username }, config.jwtSecret);
 
     // Store the token in the user's document
     moderator.token = token;
@@ -66,11 +63,8 @@ router.post('/moderator/login', async (req, res) => {
     // Save the user with the new token
     await moderator.save();
 
-    // Include the user's role in the req.user object
-    req.user = { _id: moderator._id, role: moderator.role };
-
-    // Successful login
-    res.status(200).json({ message: 'moderator login successful', token });
+    // Include the user's role and username in the response
+    res.status(200).json({ message: 'moderator login successful', token, username: moderator.username });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
