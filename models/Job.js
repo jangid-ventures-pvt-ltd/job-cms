@@ -14,7 +14,7 @@ const jobSchema = new mongoose.Schema({
   posts: String,
   jobOpeningDate: String, // Change to String
   jobClosingDate: String, // Change to String
-  jobId: String, // Remove "required" validation
+  RefID: String, // Remove "required" validation
   aboutJob: String,
   seoUrl: String, // Change to String and remove "required" validation
   createdBy: String,
