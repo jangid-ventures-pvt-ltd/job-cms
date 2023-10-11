@@ -120,4 +120,13 @@ router.delete('/:id', checkAdmin, async (req, res) => {
   }
 });
 
+router.get('/count', async (req, res) => {
+  try {
+    const totalJobs = await Job.countDocuments({});
+    res.status(200).json({ totalJobs });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 module.exports = router;
