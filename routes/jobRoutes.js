@@ -81,6 +81,19 @@ router.get('/view/:seoUrl', async (req, res) => {
   }
 });
 
+// Get a specific job listing by category
+router.get('/all-jobs/:jobCategory', async (req, res) => {
+  try {
+    const job = await Job.findOne({ category: req.params.jobCategory });
+    if (!job) {
+      return res.status(404).json({ error: 'No Jobs Found' });
+    }
+    res.status(200).json(job);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 
 // Update a job listing by ID
 router.put('/admin/:id', checkAdmin, async (req, res) => {
