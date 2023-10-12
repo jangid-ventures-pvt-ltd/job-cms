@@ -84,7 +84,7 @@ router.get('/view/:seoUrl', async (req, res) => {
 // Get a specific job listing by category
 router.get('/all-jobs/:jobCategory', async (req, res) => {
   try {
-    const job = await Job.findOne({ category: req.params.jobCategory });
+    const job = await Job.findOne({ jobCategory: req.params.jobCategory });
     if (!job) {
       return res.status(404).json({ error: 'No Jobs Found' });
     }
