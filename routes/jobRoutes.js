@@ -26,43 +26,22 @@ router.post('/moderator', checkAdmin, async (req, res) => {
 });
 
 // Fetch all job listings with optional category filter and sorted by freshness
-// router.get('/', async (req, res) => {
-//   try {
-//     let query = {}; // Default query object
-
-//     if (req.query.category) {
-//       query.jobCategory = req.query.category; // Filter by category if provided
-//     }
-
-//     const jobs = await Job.find(query).sort({ created_At: -1 }); // Sort by freshness in descending order
-//     res.status(200).json(jobs);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// });
-// Fetch jobs with pagination
 router.get('/', async (req, res) => {
   try {
-    const page = req.query.page || 1;
-    const limit = req.query.limit || 10; // Set an appropriate limit
-    const skip = (page - 1) * limit;
-
     let query = {}; // Default query object
 
     if (req.query.category) {
       query.jobCategory = req.query.category; // Filter by category if provided
     }
 
-    const jobs = await Job.find(query)
-      .sort({ created_At: -1 })
-      .skip(skip)
-      .limit(limit);
-
+    const jobs = await Job.find(query).sort({ created_At: -1 }); // Sort by freshness in descending order
     res.status(200).json(jobs);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
+
 
 // Get a specific job listing by ID
 router.get('/admin/:id', async (req, res) => {
