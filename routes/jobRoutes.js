@@ -41,6 +41,35 @@ router.get('/', async (req, res) => {
   }
 });
 
+//jobs with pagination
+router.get('/paginate', async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const perPage = 12;
+
+    let query = {}; // Default query object
+
+    if (req.query.category) {
+      query.jobCategory = req.query.category; // Filter by category if provided
+    }
+
+    const totalJobs = await Job.countDocuments(query);
+    const totalPages = Math.ceil(totalJobs / perPage);
+
+    const jobs = await Job.find(query)
+      .sort({ created_At: -1 })
+      .skip((page - 1) * perPage)
+      .limit(perPage);
+
+    res.status(200).json({
+      jobs,
+      totalPages,
+      currentPage: page,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 
 // Get a specific job listing by ID
