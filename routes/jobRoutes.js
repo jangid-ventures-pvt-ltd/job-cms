@@ -15,7 +15,7 @@ router.post('/admin', checkAdmin, async (req, res) => {
   }
 });
 
-router.post('/moderator', checkAdmin, async (req, res) => {
+router.post('/moderator', checkModerator, async (req, res) => {
   try {
     const newJob = new Job(req.body);
     const savedJob = await newJob.save();
