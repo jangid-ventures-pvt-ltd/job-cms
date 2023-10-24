@@ -32,7 +32,7 @@ router.post('/admin/login', async (req, res) => {
     await admin.save();
 
     // Include the user's role and username in the response
-    res.status(200).json({ message: 'Admin login successful', token, username: admin.username });
+    res.status(200).json({ message: 'Admin login successful', token, username: admin.username, role: admin.role});
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -64,7 +64,7 @@ router.post('/moderator/login', async (req, res) => {
     await moderator.save();
 
     // Include the user's role and username in the response
-    res.status(200).json({ message: 'moderator login successful', token, username: moderator.username });
+    res.status(200).json({ message: 'moderator login successful', token, username: moderator.username, role: moderator.role });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
