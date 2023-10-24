@@ -45,7 +45,7 @@ router.get('/', async (req, res) => {
 router.get('/paginate', async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const perPage = 12;
+    const perPage = 9;
 
     let query = {}; // Default query object
 
