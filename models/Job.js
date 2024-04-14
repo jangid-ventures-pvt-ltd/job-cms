@@ -19,6 +19,7 @@ const jobSchema = new mongoose.Schema({
   aboutJob: String,
   seoUrl: String, // Change to String and remove "required" validation
   createdBy: String,
+  hiddenItems: []
 }, {
   timestamps: {
     createdAt: 'created_At',
