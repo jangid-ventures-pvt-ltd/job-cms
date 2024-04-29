@@ -4,7 +4,7 @@ const xmlbuilder = require('xmlbuilder');
 const axios = require('axios');
 
 // Define the URL for your backend API
-const backendUrl = 'https://jobscareer24api.cyclic.cloud/';
+const backendUrl = 'https://jealous-bathing-suit-fly.cyclic.cloud/';
 
 // Create a route to generate and serve the sitemap
 router.get('/sitemap.xml', async (req, res) => { // Define the sitemap.xml route
@@ -24,7 +24,7 @@ router.get('/sitemap.xml', async (req, res) => { // Define the sitemap.xml route
     // Iterate through each job and create a URL entry
     jobs.forEach((job) => {
       const url = root.ele('url');
-      url.ele('loc', `https://www.jobscareer24.com/jobs/${job.seoUrl}`);
+      url.ele('loc', `https://www.news4jobs.com/jobs/${job.seoUrl}`);
     });
 
     // Convert the XML to a string
