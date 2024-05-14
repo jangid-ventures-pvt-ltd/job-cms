@@ -4,7 +4,7 @@ const xmlbuilder = require('xmlbuilder');
 const axios = require('axios');
 
 // Define the URL for your backend API
-const backendUrl = 'https://jealous-bathing-suit-fly.cyclic.cloud/';
+const backendUrl = 'https://jobs-career-24-api.onrender.com';
 
 // Create a route to generate and serve the sitemap
 router.get('/sitemap.xml', async (req, res) => { // Define the sitemap.xml route
