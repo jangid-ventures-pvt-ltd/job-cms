@@ -57,7 +57,7 @@ router.get('/paginate', async (req, res) => {
     const totalPages = Math.ceil(totalJobs / perPage);
 
     const jobs = await Job.find(query)
-      .sort({ created_At: -1 })
+      .sort({ updated_At: -1 }).sort({ created_At: -1 })
       .skip((page - 1) * perPage)
       .limit(perPage);
 
